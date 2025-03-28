@@ -1,0 +1,37 @@
+services:
+  backend:
+    build: ./backend
+    image: todo-app-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
+  frontend:
+    build: ./frontend
+    image: todo-app-frontend
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_BACKEND=backend
+      - REACT_APP_PORT=5000
+    depends_on: 
+      - backend
+    deploy:
+      replicas: 2
+
+  redis:
+    image: redis:latest
+    ports:
+      - "15135:6379"
+    volumes:
+      - redis_data:/data
+    deploy:
+      replicas: 1
+
+volumes:
+  redis_data:

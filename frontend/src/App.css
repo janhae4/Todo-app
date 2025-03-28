@@ -1,1 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
+
+:root {
+    font-family: 'Roboto' ,system-ui, Helvetica, Arial, sans-serif;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
+  
+  .animate-slide-out {
+    animation: slideOut 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .animate-fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-wrapper svg {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .icon-wrapper svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .icon-wrapper svg:not(:last-child) {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
